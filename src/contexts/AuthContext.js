@@ -11,6 +11,7 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../firebase';
+import { stringify } from '@firebase/util';
 
 const AuthContext = React.createContext();
 const provider = new GoogleAuthProvider();
@@ -34,18 +35,22 @@ export function AuthProvider({ children }) {
   async function signInWithGoogle() {
     try {
       const result = await signInWithPopup(auth, provider);
-      // This gives you a Google Access Token. You can use it to access the Google API.
+
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
+      const { accessToken } = credential;
+
+      const { user } = result;
+      // console.log(stringify(user));
+      // const { displayName, email, photoURL } = user;
+      // console.log(
+      //   `Token: ${accessToken}, display name: ${displayName}, email: ${email}, photo: ${photoURL}`,
+      // );
     } catch (error) {
-      console.log(error);
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
+      // console.log(error);
+      const { code, message } = error;
+
       const email = error.customData.email;
-      // The AuthCredential type that was used.
+
       const credential = GoogleAuthProvider.credentialFromError(error);
     }
   }

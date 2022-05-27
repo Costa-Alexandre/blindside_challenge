@@ -20,6 +20,8 @@ export default function Dashboard() {
     }
   }
 
+  const { displayName, email, photoURL } = currentUser;
+
   return (
     <>
       <Card>
@@ -27,7 +29,9 @@ export default function Dashboard() {
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error} </Alert>}
           {message && <Alert variant="success">{message} </Alert>}
-          <strong>Email: {currentUser.email} </strong>
+          <strong>Email: {email} </strong>
+          <p>Name: {displayName}</p>
+          <img src={photoURL} alt="profile pic" />
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

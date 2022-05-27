@@ -1,0 +1,14 @@
+button{
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+button:hover{
+  background-color: #aaa;
+  transition: ease-in-out;
+}
+
+img{
+  padding: 0.2rem;
+}
+

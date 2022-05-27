@@ -2,11 +2,14 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import SignInWithGoogle from './SignInWithGoogle';
+import logotype from '../assets/Logotype_White_Web.svg';
+import '../styles/Login.css';
 
 export default function Login(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, signInWithGoogle } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -26,32 +29,13 @@ export default function Login(props) {
     setLoading(false);
   }
 
-  async function handleClick() {
-    try {
-      setError('');
-      setLoading(true);
-      await signInWithGoogle();
-      navigate('/');
-    } catch {
-      setError('Failed to sign in');
-    }
-    setLoading(false);
-  }
-
   return (
     <>
-      <div className="login-buttons">
-        <button className="login-provider-button" onClick={handleClick}>
-          <img
-            src="https://img.icons8.com/ios-filled/50/000000/google-logo.png"
-            alt="google icon"
-          />
-          <span> Continue with Google</span>
-        </button>
-      </div>
-      <Card>
+      <Card className="card">
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+          <h2 className="text-center mb-4">
+            <img src={logotype} alt="" />
+          </h2>
           {error && <Alert variant="danger">{error} </Alert>}
           {message && <Alert variant="success">{message} </Alert>}
           <Form onSubmit={handleSubmit}>
@@ -73,10 +57,20 @@ export default function Login(props) {
                 required
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100 my-2" type="submit">
+            <button
+              disabled={loading}
+              className="w-100 mt-4 login-button"
+              type="submit"
+            >
               Log In
-            </Button>
+            </button>
           </Form>
+          <div className="text-center mt-4">
+            <p>
+              <strong>Or login with</strong>
+            </p>
+          </div>
+          <SignInWithGoogle />
           <div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
