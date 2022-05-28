@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { ref, getStorage, getDownloadURL } from 'firebase/storage';
 
 export default function Dashboard() {
   const [error, setError] = useState('');
@@ -22,6 +23,19 @@ export default function Dashboard() {
 
   const { displayName, email, photoURL } = currentUser;
 
+  const storage = getStorage();
+  getDownloadURL(ref(storage, 'react.png'))
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+
+      // Or inserted into an <img> element
+      const img = document.getElementById('myimg');
+      img.setAttribute('src', url);
+    })
+    .catch((error) => {
+      // Handle any errors
+    });
+
   return (
     <>
       <Card>
@@ -32,6 +46,7 @@ export default function Dashboard() {
           <strong>Email: {email} </strong>
           <p>Name: {displayName}</p>
           <img src={photoURL} alt="profile pic" />
+          <img id="myimg" alt="firebase pic" />
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
