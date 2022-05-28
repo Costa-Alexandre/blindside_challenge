@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ref, getStorage, getDownloadURL } from 'firebase/storage';
+import ReactPlayer from 'react-player';
 
 export default function Dashboard() {
   const [error, setError] = useState('');
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const { message } = useLocation().state || '';
+  const [url, setUrl] = useState('');
 
   async function handleLogout() {
     setError('');
@@ -23,18 +25,15 @@ export default function Dashboard() {
 
   const { displayName, email, photoURL } = currentUser;
 
-  const storage = getStorage();
-  getDownloadURL(ref(storage, 'react.png'))
-    .then((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
+  const getUrl = async (path) => {
+    const storage = getStorage();
+    const url = await getDownloadURL(ref(storage, path));
+    setUrl(url);
+  };
 
-      // Or inserted into an <img> element
-      const img = document.getElementById('myimg');
-      img.setAttribute('src', url);
-    })
-    .catch((error) => {
-      // Handle any errors
-    });
+  useEffect(() => {
+    getUrl('ski.mp4');
+  }, []);
 
   return (
     <>
@@ -46,7 +45,7 @@ export default function Dashboard() {
           <strong>Email: {email} </strong>
           <p>Name: {displayName}</p>
           <img src={photoURL} alt="profile pic" />
-          <img id="myimg" alt="firebase pic" />
+          <ReactPlayer url={url} controls={true} />
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
