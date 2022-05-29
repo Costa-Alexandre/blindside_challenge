@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ref, getStorage, getDownloadURL } from 'firebase/storage';
 import ReactPlayer from 'react-player';
 import Navbar from './Navbar';
+import Gallery from './Gallery';
 
 export default function Dashboard() {
   const [error, setError] = useState('');
@@ -43,6 +44,7 @@ export default function Dashboard() {
       <button variant="link" onClick={handleLogout}>
         Log out
       </button>
+      <Gallery />
     </>
   );
 }
