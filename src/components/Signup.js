@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Form, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import logotype from '../assets/Logotype_White_Web.svg';
 
 export default function Signup() {
   const emailRef = useRef();
@@ -34,7 +35,8 @@ export default function Signup() {
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
+          <img src={logotype} alt="" />
+          <h2 className="text-center mt-4">Sign Up</h2>
           {error && <Alert variant="danger">{error} </Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

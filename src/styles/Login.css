@@ -1,12 +1,18 @@
 body {
   background: #000;
-  color: #ccc
+  color: #ccc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card{
   background: #32323b;
   color: #ccc;
   border-color: transparent;
+  max-width: 400px;
+  margin: auto;
 }
 
 .login-button{

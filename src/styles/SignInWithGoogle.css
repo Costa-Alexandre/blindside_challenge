@@ -8,7 +8,9 @@ button:hover{
   transition: ease-in-out;
 }
 
-img{
+#google-icon{
   padding: 0.2rem;
+  width: 48px;
+  height: 48px;
 }
 

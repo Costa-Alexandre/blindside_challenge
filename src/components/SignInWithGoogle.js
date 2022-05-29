@@ -25,7 +25,7 @@ function SignInWithGoogle() {
   return (
     <div className="text-center">
       <button disabled={loading} type="button" onClick={handleClick}>
-        <img src={logo} alt="google icon" width={48} height={48} />
+        <img src={logo} alt="google icon" id="google-icon" />
       </button>
     </div>
   );
