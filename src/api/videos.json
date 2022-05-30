@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Basketball",
+    "img_path": "basketball.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "basketball.mp4"
+  },
+  {
+    "title": "Cycling",
+    "img_path": "bike.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "bike.mp4"
+  },
+  {
+    "title": "Freestyle Motorcross",
+    "img_path": "bmx.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "bmx.mp4"
+  },
+  {
+    "title": "Paraglide",
+    "img_path": "paraglide.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "paraglide.mp4"
+  },
+  {
+    "title": "Rollerblade",
+    "img_path": "rollerblade.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "rollerblade.mp4"
+  },
+  {
+    "title": "Running",
+    "img_path": "run.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "run.mp4"
+  },
+  {
+    "title": "Skiing",
+    "img_path": "ski.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "ski.mp4"
+  },
+  {
+    "title": "Surfing",
+    "img_path": "surf.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "video_path": "surf.mp4"
+  }
+]

@@ -10,7 +10,7 @@ function Navbar() {
   const { displayName, email, photoURL } = currentUser;
 
   return (
-    <navbar>
+    <nav>
       <div className="navbar-container">
         <div className="navbar-brand">
           <img src={logo} alt="logo" />
@@ -22,7 +22,7 @@ function Navbar() {
           <img src={photoURL ? photoURL : profilePlaceholder} alt="profile" />
         </div>
       </div>
-    </navbar>
+    </nav>
   );
 }
 
