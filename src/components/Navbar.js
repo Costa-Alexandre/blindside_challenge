@@ -16,7 +16,7 @@ function Navbar() {
           <img src={logo} alt="logo" />
         </div>
         <div className="navbar-links">
-          <Link to="/library">Blindside Library</Link>
+          <Link to="/">Blindside Library</Link>
         </div>
         <div className="navbar-profile">
           <img src={photoURL ? photoURL : profilePlaceholder} alt="profile" />
