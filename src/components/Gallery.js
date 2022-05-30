@@ -1,23 +1,10 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
-import { getAllVideos } from '../api/videos';
+import { Link, useOutletContext } from 'react-router-dom';
 
 export default function ImageMasonry() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [itemData, setItemData] = useState([]);
-
-  const loadItems = useCallback(async () => {
-    console.log('loading items');
-    const listVideos = await getAllVideos();
-    setItemData(listVideos);
-    setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
-    setIsLoading(true);
-    loadItems();
-  }, [loadItems]);
+  const [itemData, isLoading] = useOutletContext();
 
   return (
     <Box sx={{ width: '100%', marginTop: '80px' }}>

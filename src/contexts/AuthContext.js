@@ -11,7 +11,6 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../firebase';
-import { stringify } from '@firebase/util';
 
 const AuthContext = React.createContext();
 const provider = new GoogleAuthProvider();
@@ -40,11 +39,6 @@ export function AuthProvider({ children }) {
       const { accessToken } = credential;
 
       const { user } = result;
-      // console.log(stringify(user));
-      // const { displayName, email, photoURL } = user;
-      // console.log(
-      //   `Token: ${accessToken}, display name: ${displayName}, email: ${email}, photo: ${photoURL}`,
-      // );
     } catch (error) {
       // console.log(error);
       const { code, message } = error;
