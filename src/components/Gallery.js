@@ -16,7 +16,7 @@ export default function ImageMasonry() {
   return (
     <Box sx={{ width: '100%', marginTop: '80px' }}>
       {!isLoading && (
-        <Masonry columns={4} spacing={2}>
+        <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
           {itemData.map((item, index) => (
             <div key={index}>
               <Card sx={{ maxWidth: 500 }}>
@@ -45,8 +45,8 @@ export default function ImageMasonry() {
         </Masonry>
       )}
       {isLoading && (
-        <Masonry columns={4} spacing={2}>
-          {skeletonArr.map((item, index) => (
+        <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
+          {skeletonArr.map((_, index) => (
             <div key={index}>
               <Card sx={{ maxWidth: 500 }}>
                 <div className="skeleton" alt="placeholder" />
