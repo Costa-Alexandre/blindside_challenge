@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,7 +16,8 @@ import MenuItem from '@mui/material/MenuItem';
 import CardHeader from '@mui/material/CardHeader';
 import SvgIcon from '@mui/material/SvgIcon';
 import FaceRoundedIcon from '@mui/icons-material/FaceRounded';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTheme } from '@mui/styles';
+
 import profilePlaceholder from '../assets/profile-placeholder.jpg';
 import { ReactComponent as Logo } from '../assets/Logotype_White_Web.svg';
 import '../styles/Navbar.css';
@@ -25,6 +27,11 @@ function Navbar() {
   const { displayName, email, photoURL } = currentUser;
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  let navigate = useNavigate();
+  const {
+    palette: { primary, secondary },
+  } = useTheme();
 
   const handleLogout = () => {
     logout();
@@ -46,153 +53,148 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const navigateHome = () => {
+    navigate('/');
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <AppBar position="static" color="primary">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <SvgIcon
-              component={Logo}
-              inheritViewBox
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                mr: 1,
-                width: '130px',
+    <AppBar position="static" sx={{ bgcolor: primary.dark }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <SvgIcon
+            component={Logo}
+            inheritViewBox
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              mr: 60,
+              width: '130px',
+            }}
+          />
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
-            />
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Blindside Library</Typography>
-                </MenuItem>
-              </Menu>
-            </Box>
-            <SvgIcon
-              component={Logo}
-              inheritViewBox
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                mr: 1,
-                width: '130px',
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
               }}
-            />
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              <MenuItem onClick={navigateHome}>
+                <Typography textAlign="center">Blindside Library</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <SvgIcon
+            component={Logo}
+            inheritViewBox
+            sx={{
+              display: { xs: 'flex', md: 'none' },
+              mr: 1,
+              width: '130px',
+            }}
+          />
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                Blindside Library
-              </Button>
-            </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button
+              onClick={navigateHome}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Blindside Library
+            </Button>
+          </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  {photoURL ? (
-                    <Avatar
-                      alt="avatar"
-                      src={photoURL ? photoURL : profilePlaceholder}
-                      sx={{ width: 56, height: 56 }}
-                    />
-                  ) : (
-                    <Avatar>
-                      <FaceRoundedIcon />
-                    </Avatar>
-                  )}
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '50px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem key="displayName">
-                  <CardHeader
-                    avatar={
-                      photoURL ? (
-                        <Avatar
-                          alt="avatar"
-                          src={photoURL ? photoURL : profilePlaceholder}
-                          sx={{ width: 56, height: 56 }}
-                        />
-                      ) : (
-                        <Avatar>
-                          <FaceRoundedIcon />
-                        </Avatar>
-                      )
-                    }
-                    title={displayName}
-                    subheader={email}
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {photoURL ? (
+                  <Avatar
+                    alt="avatar"
+                    src={photoURL ? photoURL : profilePlaceholder}
+                    sx={{ width: 56, height: 56 }}
                   />
-                </MenuItem>
-                <MenuItem key="logout" onClick={handleLogout}>
-                  <Typography textAlign="center" width="100%">
-                    Log Out
-                  </Typography>
-                </MenuItem>
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </ThemeProvider>
+                ) : (
+                  <Avatar>
+                    <FaceRoundedIcon sx={{ width: 56, height: 56 }} />
+                  </Avatar>
+                )}
+              </IconButton>
+            </Tooltip>
+            <Menu
+              PaperProps={{
+                style: {
+                  backgroundColor: '#32323b',
+                  color: 'white',
+                },
+              }}
+              sx={{ mt: '50px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem key="displayName">
+                <CardHeader
+                  subheaderTypographyProps={{
+                    color: secondary.main,
+                  }}
+                  avatar={
+                    photoURL ? (
+                      <Avatar
+                        alt="avatar"
+                        src={photoURL ? photoURL : profilePlaceholder}
+                        sx={{ width: 56, height: 56 }}
+                      />
+                    ) : (
+                      <Avatar>
+                        <FaceRoundedIcon sx={{ width: 56, height: 56 }} />
+                      </Avatar>
+                    )
+                  }
+                  title={displayName}
+                  subheader={email}
+                />
+              </MenuItem>
+              <MenuItem key="logout" onClick={handleLogout}>
+                <Typography textAlign="center" width="100%">
+                  Log Out
+                </Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
-
-const theme = createTheme({
-  status: {
-    danger: '#e53e3e',
-  },
-  palette: {
-    primary: {
-      main: '#32323b',
-      darker: '#32323b',
-    },
-    neutral: {
-      main: '#64748B',
-      contrastText: '#fff',
-    },
-  },
-});
 
 export default Navbar;
