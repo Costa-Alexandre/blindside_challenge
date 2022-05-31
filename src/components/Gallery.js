@@ -14,7 +14,7 @@ export default function ImageMasonry() {
   const skeletonArr = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <Box sx={{ width: '100%', marginTop: '80px' }}>
+    <Box sx={{ width: '100%', marginTop: '16px' }}>
       {!isLoading && (
         <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
           {itemData.map((item, index) => (
