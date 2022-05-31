@@ -2,14 +2,14 @@
   {
     "title": "Basketball",
     "img_path": "basketball.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
     "video_path": "basketball.mp4",
     "related_videos": ["bike.mp4", "run.mp4", "rollerblade.mp4"]
   },
   {
     "title": "Cycling",
     "img_path": "bike.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "description": "Lorem ipsum dolor.",
     "video_path": "bike.mp4",
     "related_videos": ["basketball.mp4", "bmx.mp4", "run.mp4"]
   },
@@ -37,21 +37,21 @@
   {
     "title": "Running",
     "img_path": "run.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     "video_path": "run.mp4",
     "related_videos": ["basketball.mp4", "bike.mp4", "rollerblade.mp4"]
   },
   {
     "title": "Skiing",
     "img_path": "ski.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     "video_path": "ski.mp4",
     "related_videos": ["rollerblade.mp4", "surf.mp4"]
   },
   {
     "title": "Surfing",
     "img_path": "surf.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
     "video_path": "surf.mp4",
     "related_videos": ["paraglide.mp4", "ski.mp4"]
   }

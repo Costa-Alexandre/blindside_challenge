@@ -7,35 +7,35 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Masonry from '@mui/lab/Masonry';
 import { Link, useOutletContext } from 'react-router-dom';
+import GallerySkeleton from './GallerySkeleton';
 import '../styles/Gallery.css';
 
 export default function ImageMasonry() {
   const [itemData, isLoading] = useOutletContext();
-  const skeletonArr = [1, 2, 3, 4, 5, 6, 7, 8];
+  const skeletonArr = Array(8).fill(1);
 
   return (
     <Box sx={{ width: '100%', marginTop: '16px' }}>
       {!isLoading && (
         <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
-          {itemData.map((item, index) => (
+          {itemData.map(({ video_path, imgUrl, title, description }, index) => (
             <div key={index}>
-              <Card sx={{ maxWidth: 500 }}>
-                <CardActionArea
-                  component={Link}
-                  to={`/videos/${item.video_path}`}
-                >
+              <Card sx={{ maxWidth: 500, minHeight: 430 }}>
+                <CardActionArea component={Link} to={`/videos/${video_path}`}>
                   <CardMedia
                     component="img"
                     height="300"
-                    image={item.imgUrl}
-                    alt={item.title}
+                    image={imgUrl}
+                    alt={title}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {item.title}
+                      {title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {item.description}
+                      {description.length < 100
+                        ? description
+                        : `${description.slice(0, 140)}...`}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -47,23 +47,7 @@ export default function ImageMasonry() {
       {isLoading && (
         <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
           {skeletonArr.map((_, index) => (
-            <div key={index}>
-              <Card sx={{ maxWidth: 500 }}>
-                <div className="skeleton" alt="placeholder" />
-                <CardContent>
-                  <div className="title" data-title>
-                    <div className="skeleton skeleton-text" />
-                    <div className="skeleton skeleton-text" />
-                  </div>
-                  <div data-body>
-                    <div className="skeleton skeleton-text" />
-                    <div className="skeleton skeleton-text" />
-                    <div className="skeleton skeleton-text" />
-                    <div className="skeleton skeleton-text" />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <GallerySkeleton key={index} />
           ))}
         </Masonry>
       )}

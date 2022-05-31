@@ -15,12 +15,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import CardHeader from '@mui/material/CardHeader';
 import SvgIcon from '@mui/material/SvgIcon';
-import FaceRoundedIcon from '@mui/icons-material/FaceRounded';
 import { useTheme } from '@mui/styles';
-
-import profilePlaceholder from '../assets/profile-placeholder.jpg';
 import { ReactComponent as Logo } from '../assets/Logotype_White_Web.svg';
-import '../styles/Navbar.css';
 
 function Navbar() {
   const { currentUser, logout } = useAuth();
@@ -58,7 +54,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: primary.dark }}>
+    <AppBar position="absolute" sx={{ bgcolor: primary.dark }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SvgIcon
@@ -127,17 +123,11 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {photoURL ? (
-                  <Avatar
-                    alt="avatar"
-                    src={photoURL ? photoURL : profilePlaceholder}
-                    sx={{ width: 56, height: 56 }}
-                  />
-                ) : (
-                  <Avatar>
-                    <FaceRoundedIcon sx={{ width: 56, height: 56 }} />
-                  </Avatar>
-                )}
+                <Avatar
+                  alt={displayName}
+                  src={photoURL}
+                  sx={{ width: 56, height: 56 }}
+                />
               </IconButton>
             </Tooltip>
             <Menu
@@ -168,17 +158,11 @@ function Navbar() {
                     color: secondary.main,
                   }}
                   avatar={
-                    photoURL ? (
-                      <Avatar
-                        alt="avatar"
-                        src={photoURL ? photoURL : profilePlaceholder}
-                        sx={{ width: 56, height: 56 }}
-                      />
-                    ) : (
-                      <Avatar>
-                        <FaceRoundedIcon sx={{ width: 56, height: 56 }} />
-                      </Avatar>
-                    )
+                    <Avatar
+                      alt={displayName}
+                      src={photoURL}
+                      sx={{ width: 56, height: 56 }}
+                    />
                   }
                   title={displayName}
                   subheader={email}

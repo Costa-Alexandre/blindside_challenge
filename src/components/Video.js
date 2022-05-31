@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
 import RelatedVideo from './RelatedVideo';
 import Card from '@mui/material/Card';
@@ -59,6 +59,10 @@ function Video() {
       duration: theme.transitions.duration.shortest,
     }),
   }));
+
+  useEffect(() => {
+    setComments([]);
+  }, [video_path]);
 
   if (!isLoading) {
     const data = itemData.filter((item) => item.video_path === video_path);
