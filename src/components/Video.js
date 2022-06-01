@@ -77,6 +77,7 @@ function Video() {
             flexDirection: 'column',
             margin: '0 10%',
             alignItems: 'flex-start',
+            marginTop: '80px',
           }}
         >
           <Button

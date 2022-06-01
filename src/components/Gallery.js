@@ -15,7 +15,7 @@ export default function ImageMasonry() {
   const skeletonArr = Array(8).fill(1);
 
   return (
-    <Box sx={{ width: '100%', marginTop: '16px' }}>
+    <Box sx={{ width: '100%', marginTop: '80px' }}>
       {!isLoading && (
         <Masonry columns={{ xs: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
           {itemData.map(({ video_path, imgUrl, title, description }, index) => (
